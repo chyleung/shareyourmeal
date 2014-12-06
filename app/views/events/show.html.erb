@@ -1,0 +1,21 @@
+<h1><%= @event.name %></h1>
+<p>
+  Date: <%= @event.date %>
+  <br />
+ 	Time: <%= @event.time %>
+  <br />
+  District: <%= @event.district %>
+  <br />
+  Address: <%= @event.address %>
+  <br />
+  Maximum attendee: <%= @event.max_attendee %>
+	<br />
+  Current attendee: <%= @event.current_attendee %>
+	<br />
+  Description: <%= @event.description %>
+	<br />
+  Created by: <%= @event.user.firstname%> <%= @event.user.lastname %>
+</p>
+
+<%= link_to("See all events", events_path) %>
+<%= link_to("Add a new event", new_event_path) %>

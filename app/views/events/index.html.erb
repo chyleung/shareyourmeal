@@ -1,0 +1,6 @@
+<%= form_tag events_path, method: :get do %>
+  <%= text_field_tag :q, params[:q] %>
+  <%= submit_tag "Search Events by District" %>
+<% end %>
+
+<%= render partial: 'events/list', locals: { events: @events } %>

@@ -1,0 +1,18 @@
+<%= form_for @restaurant do |r| %>
+  Name:
+  <%= r.text_field :name %>
+  <br />
+  Address:
+  <%= r.text_field :address %>
+  <br />
+  District:
+  <%= r.text_field :district %>
+  <br />
+  Phone:
+  <%= r.text_field :phone %>
+  <br />
+  Coupon:
+  <%= r.text_area :coupon_type %>
+  <br />
+  <%= r.submit %>
+<% end %>

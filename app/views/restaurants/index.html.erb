@@ -1,0 +1,6 @@
+<%= form_tag restaurants_path, method: :get do %>
+  <%= text_field_tag :q, params[:q] %>
+  <%= submit_tag "Search Restaurants by Name" %>
+<% end %>
+
+<%= render partial: 'restaurants/list', locals: { restaurants: @restaurants } %>

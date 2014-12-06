@@ -1,0 +1,31 @@
+<table>
+  <caption>Events</caption>
+  <head>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>District</th>
+      <th>Address</th>
+      <th>Maximum Attendee</th>
+      <th>Current Attendee</th>
+      <th>Description</th>
+      <th>Created by</th>
+    </tr>
+  </head>
+  <body>
+    <% @events.each do |e| %>
+      <tr>
+        <td><%= link_to(e.name, e) %></td>
+        <td><%= e.date %></td>
+        <td><%= e.time %></td>
+        <td><%= e.district %></td>
+        <td><%= e.address %></td>
+        <td><%= e.max_attendee %></td>
+        <td><%= e.current_attendee %></td>
+        <td><%= e.description %></td>
+        <td><%= e.user.firstname %> <%= e.user.lastname %></td>
+      </tr>
+    <% end %>
+  </body>
+</table>

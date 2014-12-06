@@ -1,0 +1,25 @@
+<h1>All Users</h1>
+
+<table> 
+	<% @users.each do |u| %>
+		<tr>
+			<td><%= link_to(u.firstname, u) %></td>
+			<td><%= link_to(u.lastname, u) %></td>
+			<td><%= u.email %></td>
+				
+				<% r = u.restaurants.flatten.size - 1 %>
+				<% until r < 0 do %>
+				<td><%= u.restaurants.flatten[r].name %></td>
+				<% r -= 1 %>
+				<% end %>	
+				
+				<% e = u.events.flatten.size - 1 %>
+				<% until e < 0 do %>
+				<td><%= u.events.flatten[e].name %></td>
+				<% e -= 1 %>
+				<% end %>	
+		</tr>
+		<% end %>
+</table>
+
+<%= link_to("Return to homepage", "/") %>

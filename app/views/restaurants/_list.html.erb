@@ -1,0 +1,23 @@
+<table>
+  <caption>Restaurants</caption>
+  <head>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>District</th>
+      <th>Phone</th>
+      <th>Coupon</th>
+    </tr>
+  </head>
+  <body>
+    <% @restaurants.each do |r| %>
+      <tr>
+        <td><%= link_to(r.name, r) %></td>
+        <td><%= r.address %></td>
+        <td><%= r.district %></td>
+        <td><%= r.phone %></td>
+        <td><%= r.coupon_type %></td>
+      </tr>
+    <% end %>
+  </body>
+</table>

@@ -1,0 +1,27 @@
+<%= form_for @event do |e| %>
+  Name:
+  <%= e.text_field :name %>
+  <br />
+  Date:
+  <%= e.text_field :date %>
+   <br />
+  Time:
+  <%= e.text_field :time %>
+   <br />
+  District:
+  <%= e.text_field :district %>
+   <br />
+  Address:
+  <%= e.text_field :address %>
+  <br />
+  Maximum attendee:
+  <%= e.text_field :max_attendee %>
+  <br />
+  Current attendee:
+  <%= e.text_area :current_attendee %>
+  <br />
+  Description:
+  <%= e.text_area :description %>
+  <br />
+  <%= e.submit %>
+<% end %>
