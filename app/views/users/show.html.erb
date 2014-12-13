@@ -15,7 +15,7 @@
 	<% until r < 0 do %>
 	<%= @user.restaurants.flatten[r].name %>
 	<% r -= 1 %>
-	<% end %>	 
+	<% end %>
 </p>
 
 <%= link_to("Return to homepage", "/") %>

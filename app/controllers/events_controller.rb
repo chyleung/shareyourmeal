@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+
+  before_action :authenticate_user!, except: [:index, :show]
+
 def index
     @events = Event.where('district LIKE :query', query: "%#{params[:q]}%")
 end

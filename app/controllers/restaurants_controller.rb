@@ -1,4 +1,7 @@
 class RestaurantsController < ApplicationController
+  
+  before_action :authenticate_user!, except: [:index, :show]
+
 def index
     @restaurants = Restaurant.where('name LIKE :query', query: "%#{params[:q]}%")
     #@restaurants_d = Restaurant.where('district LIKE :query', query: "%#{params[:q]}%")
