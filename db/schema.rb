@@ -11,16 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213022335) do
+ActiveRecord::Schema.define(version: 20141213051112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "districts", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "districts_users", id: false, force: true do |t|
+    t.integer "district_id", null: false
+    t.integer "user_id",     null: false
+  end
 
   create_table "events", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.string   "district"
     t.string   "address"
     t.integer  "max_attendee"
     t.integer  "current_attendee"
@@ -28,6 +38,12 @@ ActiveRecord::Schema.define(version: 20141213022335) do
     t.integer  "user_id"
     t.date     "date"
     t.time     "time"
+    t.integer  "district_id"
+  end
+
+  create_table "events_users", id: false, force: true do |t|
+    t.integer "event_id", null: false
+    t.integer "user_id",  null: false
   end
 
   create_table "restaurants", force: true do |t|
@@ -38,7 +54,7 @@ ActiveRecord::Schema.define(version: 20141213022335) do
     t.integer  "phone"
     t.text     "coupon_type"
     t.integer  "user_id"
-    t.string   "district"
+    t.integer  "district_id"
   end
 
   create_table "users", force: true do |t|
