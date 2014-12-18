@@ -48,3 +48,5 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
 gem 'byebug', group: :development
+
+gem 'simple_form'

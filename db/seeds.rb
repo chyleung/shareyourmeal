@@ -82,7 +82,7 @@ Restaurant.create!([
 Event.create!([
 	{
 		name: "Happy Eat-a-thon",
-		date: "2015-03-15",
+		date: "2014-09-15",
 		time: "15:00",
 		district_id: d1.id,
 		address: "33 Queens Road East",
