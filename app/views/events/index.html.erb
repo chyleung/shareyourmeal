@@ -1,6 +1,8 @@
 <%= form_tag events_path, method: :get do %>
-  <%= text_field_tag :q, params[:q] %>
-  <%= submit_tag "Search Events by District" %>
+  <%= text_field_tag :n, params[:n], :placeholder => "Event name" %>
+  <%= text_field_tag :d, params[:d], :placeholder => "District" %>
+   <%= select_tag :t, options_for_select(["Today","This Week", "This Month", "All Events", "Past Events"], params[:t]) %>
+  <%= submit_tag "Search" %>
 <% end %>
 
 <%= render partial: 'events/list', locals: { events: @events } %>

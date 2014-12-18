@@ -2,11 +2,19 @@
 <p>
   Address: <%= @restaurant.address %>
   <br />
-  District: <%= @restaurant.district %>
+  District: <%= @restaurant.district.name %>
   <br />
   Phone: <%= @restaurant.phone %>
   <br />
   Coupon: <%= @restaurant.coupon_type %>
+  <br />
+  Managed by: <%= @restaurant.user.firstname %>
+
+  <% if user_signed_in? && @restaurant.user.id == current_user.id %>
+    <%= button_to 'edit', edit_restaurant_path(@restaurant), method: :get %>
+  <% else %>
+  <% end %>
+
 </p>
 
 <%= link_to("See all restuarants", restaurants_path) %>

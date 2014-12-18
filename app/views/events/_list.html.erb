@@ -18,8 +18,8 @@
       <tr>
         <td><%= link_to(e.name, e) %></td>
         <td><%= e.date %></td>
-        <td><%= e.time %></td>
-        <td><%= e.district %></td>
+        <td><%= e.time.strftime("%l:%M %p") %></td>
+        <td><%= e.district.name %></td>
         <td><%= e.address %></td>
         <td><%= e.max_attendee %></td>
         <td><%= e.current_attendee %></td>

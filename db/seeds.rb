@@ -8,6 +8,18 @@
 
 d1 = District.create!(name: "Wanchai")
 d2 = District.create!(name: "Admiralty")
+d3 = District.create!(name: "Central")
+d4 = District.create!(name: "Sheung Wan")
+d5 = District.create!(name: "Tin Hau")
+d6 = District.create!(name: "Fortress Hill")
+d7 = District.create!(name: "North Point")
+d8 = District.create!(name: "Quarry Bay")
+d9 = District.create!(name: "Tsim Sha Tsui")
+d10 = District.create!(name: "Jordan")
+d11 = District.create!(name: "Yau Ma Tei")
+d12 = District.create!(name: "Mong Kok")
+d13 = District.create!(name: "Prince Edward")
+d14 = District.create!(name: "Kwun Tong")
 
 u1 = User.create!(
 	firstname: "Angela",
@@ -85,7 +97,7 @@ Event.create!([
 		time: "15:00",
 		district_id: d1.id,
 		address: "40 Jaffe Road",
-		max_attendee: 10,
+		max_attendee: 30,
 		current_attendee: 30,
 		description: "Community sharing",
 		user_id: u1.id,
@@ -96,7 +108,7 @@ Event.create!([
 		time: "14:00",
 		district_id: d2.id,
 		address: "10 Tonnechy",
-		max_attendee: 10,
+		max_attendee: 40,
 		current_attendee: 30,
 		description: "Community sharing",
 		user_id: u2.id,

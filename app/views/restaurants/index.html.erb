@@ -1,6 +1,10 @@
 <%= form_tag restaurants_path, method: :get do %>
-  <%= text_field_tag :q, params[:q] %>
-  <%= submit_tag "Search Restaurants by Name" %>
+  <%= text_field_tag :n, params[:n], :placeholder => "Restaurant name" %>
+  <%= text_field_tag :d, params[:d], :placeholder => "District" %>
+  <% hidden_field_tag :t, " "%>
+  <%= check_box_tag :t, checked = true %>
+  <%= label_tag :t, "latest" %>
+  <%= submit_tag "Search" %>
 <% end %>
 
 <%= render partial: 'restaurants/list', locals: { restaurants: @restaurants } %>

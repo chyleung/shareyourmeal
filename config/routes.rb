@@ -8,6 +8,13 @@ Rails.application.routes.draw do
 
     resources :restaurants, :users, :events
     
+    resources :events do
+      member do
+        post :join
+        post :leave
+      end
+    end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

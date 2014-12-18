@@ -1,0 +1,21 @@
+<h2>My Restaurants</h2>
+
+<table>
+  <head>
+    <tr>
+      <th>Restaurant added</th>
+    </tr>
+  </head>
+  <body>
+      <td>
+        <ul>
+          <% r = @user.restaurants.size - 1 %>
+          <% until r < 0 do %>
+          <li><%= link_to @user.restaurants[r].name, restaurant_path(@user.restaurants[r].id) %></li>
+          <% r -= 1 %>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  </body>
+</table>

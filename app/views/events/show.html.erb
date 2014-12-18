@@ -2,9 +2,9 @@
 <p>
   Date: <%= @event.date %>
   <br />
- 	Time: <%= @event.time %>
+ 	Time: <%= @event.time.strftime("%l:%M %p") %>
   <br />
-  District: <%= @event.district %>
+  District: <%= @event.district.name %>
   <br />
   Address: <%= @event.address %>
   <br />
@@ -15,6 +15,26 @@
   Description: <%= @event.description %>
 	<br />
   Created by: <%= @event.user.firstname%> <%= @event.user.lastname %>
+  <br />
+
+  <% if user_signed_in? %>
+    <%= button_to 'join', join_event_path(@event), method: :post %>
+    <%= button_to 'leave', leave_event_path(@event), method: :post %>
+    Status: 
+ 
+    <% if @event.attendees.include?(current_user) %>
+      <%= "You are a participant"%>
+    <% else %>
+      <%= "You are not a participant" %>
+    <% end %>
+ 
+  <% if @event.user.id == current_user.id %>
+    <%= button_to 'edit', edit_event_path(@event), method: :get %>
+    <% else %>
+    <% end %>
+
+  <% else %>
+  <% end %>
 </p>
 
 <%= link_to("See all events", events_path) %>

@@ -1,0 +1,31 @@
+<h2>My Events</h2>
+<table>
+  <head>
+    <tr>
+      <th>Event joined</th>
+      <th>Event added</th>
+    </tr>
+  </head>
+  <body>
+    <tr>
+      <td> 
+        <ul>
+          <% a = @user.attendances.size - 1 %>
+          <% until a < 0 do %>
+          <li><%= link_to @user.attendances[a].name, event_path(@user.attendances[a].id) %></li>
+          <% a -= 1 %>
+          <% end %>
+      </ul>
+      </td>
+      <td>
+        <ul>
+          <% e = @user.events.size - 1 %>
+          <% until e < 0 do %>
+          <li><%= link_to @user.events[e].name, event_path(@user.events[e].id) %></li>
+          <% e -= 1 %>
+          <% end %>
+        </ul>
+      </td> 
+    </tr>
+  </body>
+</table>

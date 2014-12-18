@@ -1,3 +1,5 @@
+<h1>Update your restaurant:</h1>
+
 <%= form_for @restaurant do |r| %>
   Name:
   <%= r.text_field :name %>
@@ -18,4 +20,5 @@
   <%= r.submit %>
 <% end %>
 
+<%= link_to "Delete Restaurant", restaurant_path, method: :delete, data: {confirm: "Are you sure?"} %>
 <%= link_to "Back to Restaurants",restaurants_path %>
