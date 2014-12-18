@@ -55,7 +55,7 @@ def update
 
 def join
   @event = Event.find(params[:id])
-  if @event.max_attendee <= @event.current_attendee
+  if @event.max_attendee <= @event.attendees.count
     flash[:error] = "The event is full"
     redirect_to @event
   elsif
@@ -63,7 +63,6 @@ def join
     flash[:error] = "You have already joined this event"
     redirect_to @event
   else
-    @event.current_attendee +=1
     current_user.attendances << @event
     flash[:notice] = "Event successfully joined"
     redirect_to @event
