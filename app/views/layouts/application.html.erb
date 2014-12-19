@@ -10,13 +10,20 @@
 
 <%= render partial: 'layouts/header' %>
 
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3 text-center">
 <% flash.each do |key, value| %>
   <div class="<%= flash_class(key) %>">
     <%= value %>
   </div>
 <% end %>
+</div>
+</div>
 
 <%= yield %>
+
+<br/><br/><br/><br/>
+<%= render 'layouts/footer' %> 
 
 </body>
 </html>
