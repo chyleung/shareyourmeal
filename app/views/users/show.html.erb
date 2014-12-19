@@ -1,6 +1,7 @@
 <h1><%= @user.firstname %> <%= @user.lastname %></h1>
 
-Email: <%= @user.email %>
+Email: <%= @user.email %></br>
+<%= link_to("Edit my profile", edit_user_path(@user)) %>
 
 <%= render partial: 'users/future', object: @future_events %>
 
@@ -10,5 +11,4 @@ Email: <%= @user.email %>
 
 <%= render partial: 'users/past', locals: { past_events: @past_events } %>
 
-<%= link_to("Edit my profile", edit_user_path(@user)) %>
 <%= link_to("Return to homepage", "/") %>

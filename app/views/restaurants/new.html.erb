@@ -1,21 +1,18 @@
-<%= form_for @restaurant do |r| %>
-  Name:
-  <%= r.text_field :name %>
+<h3>Add a new restaurant</h3>
+
+<%= simple_form_for @restaurant do |r| %>
+  <%= r.input :name %>
   <br />
-  Address:
-  <%= r.text_field :address %>
+  <%= r.input :address %>
   <br />
-  District:
-  <%= r.text_field :district_id %>
+  <%= r.association :district, as: :select %>
   <br />
-  Phone:
-  <%= r.text_field :phone %>
+  <%= r.input :phone, as: :string, input_html:{maxlength: 8, minlength: 8, placeholder: "55551234" } %>
   <br />
-  Coupon:
-  <%= r.text_area :coupon_type %>
+  <%= r.input :coupon_type, as: :text %>
   <br />
-  <% hidden_field_tag(:user_id, {:user_id => current_user.id}) %>
-  <%= r.submit %>
+  <%= r.input :user_id, as: :hidden, input_html:{value: current_user.id} %>
+  <%= r.button :submit, "Submit" %>
 <% end %>
 
 <%= link_to "Back to Restaurants",restaurants_path %>

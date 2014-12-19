@@ -1,7 +1,12 @@
 class Restaurant < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :district
-	validates :phone, numericality: {only_interger: true, greater_than: 0}
+	
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :district, presence: true
+  validates :phone, presence: true, length: { is: 8}
+  validates :coupon_type, presence: true
 
 def self.search_restaurant(name,district,latest)
   @restaurants = Restaurant.all.order(name: :asc)
@@ -9,10 +14,10 @@ def self.search_restaurant(name,district,latest)
     @restaurants = @restaurants.where(["lower(restaurants.name) LIKE :query", query: "%#{name.downcase}%"])
   end
   if district.present?
-    @restaurants = @restaurants.joins(:district).where(["lower(districts.name) LIKE :query", query: "%#{district.downcase}"])
+    @restaurants = @restaurants.joins(:district).where(["lower(districts.name) LIKE :query", query: "%#{district.downcase}%"])
   end
   if latest.present?
-    @restaurants = @restaurants.where(created_at:(Date.today-30.day)..(Date.today+1))
+    @restaurants = @restaurants.where(created_at:(Date.today-30.day)..(Date.today+1.day))
   end
   @restaurants.order(name: :asc)
 end

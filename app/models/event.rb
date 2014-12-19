@@ -3,6 +3,12 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :attendees, class_name: "User"
   belongs_to :district
 
+  validates :name, presence: true
+  validates :date, presence: true
+  validates :time, presence: true
+  validates :district, presence: true
+  validates :address, presence: true
+
   def self.calc_date(date_range)
     if date_range == "past events"
       @events.where("date < ?", Date.today)
@@ -19,16 +25,30 @@ class Event < ActiveRecord::Base
 
   def self.search_event(name,district,time)
     @events = Event.where("date >= ?", Date.today).order(date: :asc)
-    if name.present?
-      @events = @events.where(["lower(events.name) LIKE :query", query: "%#{name.downcase}"])
+    if time.present? && time == "Past Events"
+      @events = Event.all
+      if name.present?
+        @events = @events.where(["lower(events.name) LIKE :query", query: "%#{name.downcase}"])
+      end
+      if district.present?
+        @events = @events.joins(:district).where(["lower(districts.name) LIKE :query", query: "%#{district.downcase}"])
+      end
+      if time.present?
+        @events = calc_date("#{time.downcase}")
+      end
+    else
+      if name.present?
+        @events = @events.where(["lower(events.name) LIKE :query", query: "%#{name.downcase}"])
+      end
+      if district.present?
+        @events = @events.joins(:district).where(["lower(districts.name) LIKE :query", query: "%#{district.downcase}"])
+      end
+      if time.present?
+        @events = calc_date("#{time.downcase}")
+      else
+      end
+      @events.order(date: :asc)
     end
-    if district.present?
-      @events = @events.joins(:district).where(["lower(districts.name) LIKE :query", query: "%#{district.downcase}"])
-    end
-    if time.present?
-      @events = calc_date("#{time.downcase}")
-    end
-    @events.order(date: :asc)
   end
 
   def nil.downcase

@@ -10,8 +10,11 @@
 
 <%= render partial: 'layouts/header' %>
 
-<%= flash[:notice] %>
-<%= flash[:error] %>
+<% flash.each do |key, value| %>
+  <div class="<%= flash_class(key) %>">
+    <%= value %>
+  </div>
+<% end %>
 
 <%= yield %>
 

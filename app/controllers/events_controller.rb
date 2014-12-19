@@ -72,7 +72,6 @@ end
 def leave
   @event = Event.find(params[:id])
   if current_user.attendances.include?(@event)
-    @event.current_attendee -=1
     current_user.attendances.delete(@event)
     flash[:notice] = "Event successfully left"
     redirect_to @event
@@ -92,6 +91,6 @@ end
 
 private
   def event_params
-    params.require(:event).permit(:name, :date, :time, :district_id, :address, :max_attendee, :current_attendee, :description, :user_id)
+    params.require(:event).permit(:name, :date, :time, :address, :max_attendee, :current_attendee, :description, :user_id, :district_id)
   end
 end
