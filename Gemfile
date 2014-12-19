@@ -50,3 +50,9 @@ gem 'autoprefixer-rails'
 gem 'byebug', group: :development
 
 gem 'simple_form'
+
+gem 'bootstrap-datepicker-rails'
+
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+
+gem 'momentjs-rails'

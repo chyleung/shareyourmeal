@@ -1,31 +1,27 @@
-<table>
-  <caption>Events</caption>
-  <head>
+<div class='row'>
+  <div class='col-md-10'>
+  <div class="table-responsive">
+  <table class='table table-striped table-hover'>
+    <caption>Search for events</caption>
+    <head>
     <tr>
       <th>Name</th>
       <th>Date</th>
       <th>Time</th>
       <th>District</th>
-      <th>Address</th>
-      <th>Maximum Attendee</th>
-      <th>Current Attendee</th>
-      <th>Description</th>
-      <th>Created by</th>
     </tr>
-  </head>
-  <body>
+    </head>
+    <body>
     <% @events.each do |e| %>
       <tr>
         <td><%= link_to(e.name, e) %></td>
         <td><%= e.date %></td>
         <td><%= e.time.strftime("%l:%M %p") %></td>
         <td><%= e.district.name %></td>
-        <td><%= e.address %></td>
-        <td><%= e.max_attendee %></td>
-        <td><%= e.attendees.count %></td>
-        <td><%= e.description %></td>
-        <td><%= e.user.firstname %> <%= e.user.lastname %></td>
       </tr>
-    <% end %>
-  </body>
-</table>
+      <% end %>
+    </body>
+  </table>
+  </div>
+  </div>
+</div>

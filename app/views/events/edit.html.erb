@@ -1,23 +1,24 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-3">
+
 <h3>Update your event</h3>
 
-<%= simple_form_for @event do |e| %>
+<%= simple_form_for(@event, :html => {:class => 'form-horizontal'} ) do |e| %></br>
   <%= e.input :name %>
-  <br />
-  <%= e.input :date, as: :date, start_date: Date.today-1 %>
-   <br />
-  <%= e.input :time, as: :time %>
-   <br />
+  <%= e.input :date, as: :date_picker, input_html: { mindate: Date.today-1 } %> 
+  <%= e.input :time, as: :time_picker %>
   <%= e.association :district, as: :select %>
-   <br />
   <%= e.input :address %>
-  <br />
   <%= e.input :max_attendee, as: :integer, input_html: { min: '0', step: '1'} %>
-  <br />
   <%= e.input :description, as: :text %>
-  <br />
   <%= e.input :user_id, as: :hidden, input_html:{value: current_user.id} %>
   <%= e.button :submit, "Submit" %>
-<% end %>
+<% end %></br>
 
-<%= link_to "Delete Event", event_path, method: :delete, data: {confirm: "Are you sure?"} %>
+<%= link_to "Delete Event", event_path, method: :delete, data: {confirm: "Are you sure?"} %> |   
 <%= link_to "Back to Events",events_path %>
+
+    </div>
+  </div>
+</div>

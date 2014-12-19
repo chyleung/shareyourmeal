@@ -1,23 +1,25 @@
-<table>
-  <caption>Restaurants</caption>
+<div class='row'>
+  <div class='col-md-10'>
+  <div class="table-responsive">
+  <table class='table table-striped table-hover'>
+  <caption>Search for restaurants</caption>
   <head>
     <tr>
       <th>Name</th>
-      <th>Address</th>
       <th>District</th>
-      <th>Phone</th>
-      <th>Coupon</th>
+       <th>Coupon</th>
     </tr>
   </head>
   <body>
     <% @restaurants.each do |r| %>
       <tr>
         <td><%= link_to(r.name, r) %></td>
-        <td><%= r.address %></td>
         <td><%= r.district.name %></td>
-        <td><%= r.phone %></td>
-        <td><%= r.coupon_type %></td>
+         <td><%= r.coupon_type %></td>
       </tr>
     <% end %>
   </body>
-</table>
+  </table>
+  </div>
+  </div>
+</div>

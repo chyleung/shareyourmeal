@@ -1,10 +1,28 @@
-<%= form_tag restaurants_path, method: :get do %>
-  <%= text_field_tag :n, params[:n], :placeholder => "Restaurant name" %>
-  <%= text_field_tag :d, params[:d], :placeholder => "District" %>
-  <% hidden_field_tag :t, " "%>
-  <%= check_box_tag :t, checked = true %>
-  <%= label_tag :t, "latest" %>
-  <%= submit_tag "Search" %>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      
+<%= form_tag restaurants_path, method: :get, class: 'form-inline' do %>
+
+  <div class="form-group">
+  <%= text_field_tag :n, params[:n], :placeholder => "Enter restaurant name", class: 'form-control'%>
+  </div>
+
+  <div class="form-group">  
+  <%= text_field_tag :d, params[:d], :placeholder => "Enter district", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+  <% hidden_field_tag :t, " " %>
+  <%= check_box_tag :t, class: "checkbox" %> Select Latest
+  </div>
+  
+  <%= submit_tag "Search", class: "btn btn-default" %>
+  <% end %>
 
 <%= render partial: 'restaurants/list', locals: { restaurants: @restaurants } %>
+
+    </div>
+  </div>
+</div>
+

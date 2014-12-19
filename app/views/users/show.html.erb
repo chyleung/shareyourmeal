@@ -1,14 +1,32 @@
-<h1><%= @user.firstname %> <%= @user.lastname %></h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-2">
 
-Email: <%= @user.email %></br>
-<%= link_to("Edit my profile", edit_user_path(@user)) %>
+<h3><%= @user.firstname %> <%= @user.lastname %></h3>
 
-<%= render partial: 'users/future', object: @future_events %>
+Email: <%= @user.email %> 
+<%= link_to("Edit", edit_user_path(@user)) %><br/><br/>
 
-<%= render partial: 'users/restaurant', locals: { restaurants: @restaurants } %>
+<div role="tabpanel">
 
-<%= render partial: 'users/district', locals: { districts: @districts } %>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#my_districts" aria-controls="my_districts" role="tab" data-toggle="tab">My districts</a></li>
+    <li role="presentation"><a href="#my_restaurants" aria-controls="my_restaurants" role="tab" data-toggle="tab">My restaurants</a></li>
+    <li role="presentation"><a href="#my_events" aria-controls="my_events" role="tab" data-toggle="tab">My events</a></li>
+    <li role="presentation"><a href="#past_events" aria-controls="past_events" role="tab" data-toggle="tab">Past events</a></li>
+  </ul>
 
-<%= render partial: 'users/past', locals: { past_events: @past_events } %>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="my_districts"><%= render partial: 'users/district', locals: { districts: @districts } %></div>
+    <div role="tabpanel" class="tab-pane" id="my_restaurants"><%= render partial: 'users/restaurant', locals: { restaurants: @restaurants } %></div>
+    <div role="tabpanel" class="tab-pane" id="my_events"><%= render partial: 'users/future', locals: { events: @events } %></div>
+    <div role="tabpanel" class="tab-pane" id="past_events"><%= render partial: 'users/past', locals: { past_events: @past_events } %></div>
+  </div>
 
-<%= link_to("Return to homepage", "/") %>
+</div>
+
+    </div>
+  </div>
+</div>

@@ -1,41 +1,45 @@
-<h1><%= @event.name %></h1>
-<p>
-  Date: <%= @event.date %>
-  <br />
- 	Time: <%= @event.time.strftime("%l:%M %p") %>
-  <br />
-  District: <%= @event.district.name %>
-  <br />
-  Address: <%= @event.address %>
-  <br />
-  Maximum attendee: <%= @event.max_attendee %>
-	<br />
-  Current attendee: <%= @event.attendees.count %>
-	<br />
-  Description: <%= @event.description %>
-	<br />
-  Created by: <%= @event.user.firstname%> <%= @event.user.lastname %>
-  <br />
- 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-3">
+
+<h3><%= @event.name %></h3> 
+Hosted by <%= @event.user.firstname%> <%= @event.user.lastname %><br/><br/>
+
    <% if user_signed_in? %>
-    <%= button_to 'join', join_event_path(@event), method: :post %>
-    <%= button_to 'leave', leave_event_path(@event), method: :post %>
-    Status: 
- 
     <% if @event.attendees.include?(current_user) %>
       <%= "You are a participant"%>
     <% else %>
       <%= "You are not a participant" %>
-    <% end %>
- 
+    <% end %><br/>
+    
+    <%= link_to 'Join', join_event_path(@event), method: :post %> |
+    <%= link_to 'Leave', leave_event_path(@event), method: :post %>
+
   <% if @event.user.id == current_user.id %>
-    <%= button_to 'edit', edit_event_path(@event), method: :get %>
+    | <%= link_to 'Edit', edit_event_path(@event), method: :get %>
     <% else %>
     <% end %>
 
   <% else %>
-  <% end %>
+  <% end %><br/><br/>
+
+<p>
+  Date | <%= @event.date %>
+  <br />
+ 	Time | <%= @event.time.strftime("%l:%M %p") %>
+  <br />
+  Address | <%= @event.address %>, <%= @event.district.name %>
+  <br />
+  Attendees | <%= @event.attendees.count %> of <%= @event.max_attendee %>
+	<br />
+  Description | <%= @event.description %>
+	<br />
+   
 </p>
 
-<%= link_to("See all events", events_path) %>
+<%= link_to("See all events", events_path) %> | 
 <%= link_to("Add a new event", new_event_path) %>
+
+    </div>
+  </div>
+</div>
