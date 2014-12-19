@@ -2,10 +2,13 @@
 
 Email: <%= @user.email %>
 
-<%= render partial: 'users/future', locals: { events: @events } %>
+<%= render partial: 'users/future', object: @future_events %>
 
 <%= render partial: 'users/restaurant', locals: { restaurants: @restaurants } %>
 
+<%= render partial: 'users/district', locals: { districts: @districts } %>
+
+<%= render partial: 'users/past', locals: { past_events: @past_events } %>
 
 <%= link_to("Edit my profile", edit_user_path(@user)) %>
 <%= link_to("Return to homepage", "/") %>

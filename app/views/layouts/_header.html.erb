@@ -10,7 +10,7 @@
     <% if user_signed_in? %>
       <%= link_to("Add a New Event", new_event_path) %> |
       <%= link_to("Add a New Restaurant", new_restaurant_path) %> |
-      <%= link_to("My Profile", user_path(current_user)) %> |
+      <%= link_to("My Profile: "+current_user.firstname, user_path(current_user)) %> |
       <%= link_to("Sign Out", destroy_user_session_path, method: :delete)%>
     <% else %>
       <%= link_to("Sign In", new_user_session_path) %> |

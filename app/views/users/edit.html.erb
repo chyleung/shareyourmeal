@@ -1,14 +1,10 @@
 <%= simple_form_for @user do |u| %>
-  First Name:
   <%= u.input :firstname %>
   <br />
-  Last Name:
   <%= u.input :lastname %>
   <br />
-  Email:
   <%= u.input :email %>
   <br />
-  Preferred District:
   <%= u.association :districts, as: :check_boxes %>
   <br />
   <%= u.button :submit, "Update" %>

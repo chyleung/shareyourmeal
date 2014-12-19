@@ -5,6 +5,8 @@ end
 
 def show
     @user = User.find(params[:id])
+    @past_events = Event.where("date < ?", Date.today).order(date: :asc)
+    @future_events = Event.where("date >= ?", Date.today).order(date: :asc)
 end
 
 def new

@@ -1,9 +1,6 @@
 <h2>Past Events</h2>
 <ul>
-<% past_events = @user.attendances.where("date < ?", Date.today) %>
-<% a = @user.attendances.where("date < ?", Date.today).count %>
-<% until a <= 0 do %>
-<li><% link_to a.past_events.name, event_path(a.past_events.id) %></li>
-<% a -=1 %>
+<% @user.attendances do |p| %>
+<li><%= link_to @user.attendances[p-1].name, event_path(@user.attendances[p-1].id) %></li> 
 <% end %>
 </ul>

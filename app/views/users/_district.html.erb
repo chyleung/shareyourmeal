@@ -1,0 +1,15 @@
+<h2>My Districts</h2>
+
+<ul>
+  <% @user.districts do |d| %>
+  <li><%= @user.districts[d-1].name %></li>
+  <% end %>
+</ul>
+
+ <ul>
+  <% d = @user.districts.size - 1 %>
+  <% until d < 0 do %>
+  <li><%= @user.districts[d].name %></li>
+  <% d -= 1 %>
+  <% end %>
+</ul>
