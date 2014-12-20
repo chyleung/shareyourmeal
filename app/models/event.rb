@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
     elsif date_range == "this week"
       @events.where(date:(Date.today-1.day)..(Date.today+7.day))
     elsif date_range == "this month"
-      @events.where(date:(Date.today-1.day)..(Date.today+90.day))
+      @events.where(date:(Date.today-1.day)..(Date.today+30.day))
     else
       @events.all
     end
@@ -28,20 +28,20 @@ class Event < ActiveRecord::Base
     if time.present? && time == "Past Events"
       @events = Event.all
       if name.present?
-        @events = @events.where(["lower(events.name) LIKE :query", query: "%#{name.downcase}"])
+        @events = @events.where(["lower(events.name) LIKE :query", query: "%#{name.downcase}%"])
       end
       if district.present?
-        @events = @events.joins(:district).where(["lower(districts.name) LIKE :query", query: "%#{district.downcase}"])
+        @events = @events.joins(:district).where(["lower(districts.name) LIKE :query", query: "%#{district.downcase}%"])
       end
       if time.present?
         @events = calc_date("#{time.downcase}")
       end
     else
       if name.present?
-        @events = @events.where(["lower(events.name) LIKE :query", query: "%#{name.downcase}"])
+        @events = @events.where(["lower(events.name) LIKE :query", query: "%#{name.downcase}%"])
       end
       if district.present?
-        @events = @events.joins(:district).where(["lower(districts.name) LIKE :query", query: "%#{district.downcase}"])
+        @events = @events.joins(:district).where(["lower(districts.name) LIKE :query", query: "%#{district.downcase}%"])
       end
       if time.present?
         @events = calc_date("#{time.downcase}")
