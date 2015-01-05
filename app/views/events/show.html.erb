@@ -5,7 +5,7 @@
 <h3><%= @event.name %></h3> 
 Hosted by <%= @event.user.firstname%> <%= @event.user.lastname %><br/><br/>
 
-   <% if user_signed_in? %>
+   <% if user_signed_in? && @event.date >= Date.today %>
     <% if @event.attendees.include?(current_user) %>
       <%= "You are a participant"%>
     <% else %>
@@ -20,6 +20,8 @@ Hosted by <%= @event.user.firstname%> <%= @event.user.lastname %><br/><br/>
     <% else %>
     <% end %>
 
+  <% elsif @event.date < Date.today %>
+  <%= "This is a past event" %>
   <% else %>
   <% end %><br/><br/>
 
